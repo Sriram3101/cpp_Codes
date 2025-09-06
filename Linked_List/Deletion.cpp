@@ -83,6 +83,22 @@ NODE* Delete_At_Pos(NODE* head,int pos) {
     return head;
 }
 
+
+NODE* delete_at_pos_RECURSIVE(NODE*curr,int index,int pos) {
+    if (curr == NULL) {
+        return curr;
+    }
+    else if (index == pos) {
+        NODE* temp = curr->next;
+        delete curr;
+        return temp;
+    }
+    else {
+        curr->next = delete_at_pos_RECURSIVE(curr->next,index+1,pos);
+        return curr;
+    }
+}
+
 int main() {
     int arr[5] = {1,2,3,4,5};
     DisplayLL(Delete_first(Create_LL(arr,0,5));
