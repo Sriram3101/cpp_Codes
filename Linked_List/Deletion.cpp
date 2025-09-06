@@ -59,6 +59,30 @@ NODE* Delete_Last(NODE*head) {
     return head;
 }
 
+
+
+NODE* Delete_At_Pos(NODE* head,int pos) {
+    if (head!=NULL) {
+        if (pos == 1) {
+            NODE*temp = head;
+            head = head->next;
+            delete temp;
+        }
+        else {
+            NODE*temp = head;
+            NODE*prev = NULL;
+            for (int i = 1;i<pos;i++) {
+                prev = temp;
+                temp = temp->next;
+            }
+            prev->next = temp->next;
+            delete temp;
+        }
+        
+    }
+    return head;
+}
+
 int main() {
     int arr[5] = {1,2,3,4,5};
     DisplayLL(Delete_first(Create_LL(arr,0,5));
